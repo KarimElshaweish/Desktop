@@ -36,6 +36,7 @@ public class LoginAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mAuth=FirebaseAuth.getInstance();
         BtnRegistter=findViewById(R.id.BtnRigister);
         BtnLogin=findViewById(R.id.btnLogin);
         mPasswordText=findViewById(R.id.EditTextPassword);
@@ -44,7 +45,8 @@ public class LoginAct extends AppCompatActivity {
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String PhoneNumber=mPhoneText.getText().toString();
+                startActivity(new Intent(getBaseContext(),MapsActivity.class));
+               /* String PhoneNumber=mPhoneText.getText().toString();
                 String Password=mPasswordText.getText().toString();
                 if(PhoneNumber.isEmpty()){
                     mPhoneText.setError("please enter the phone number");
@@ -59,7 +61,7 @@ public class LoginAct extends AppCompatActivity {
                         60,                 // Timeout duration
                         TimeUnit.SECONDS,   // Unit of timeout
                         LoginAct.this,               // Activity (for callback binding
-                        mcalls );
+                        mcalls );*/
 
             }
         });

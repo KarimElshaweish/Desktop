@@ -32,10 +32,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.github.armcha:SpaceNavigationView:1.6.0'
+
     compile "com.google.android.gms:play-services-gcm:11.0.4"
     compile 'com.google.android.gms:play-services-location:11.0.4'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
+    compile'com.github.shts:StoriesProgressView:2.0.0'
+    compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

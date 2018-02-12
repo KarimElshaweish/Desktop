@@ -1,4 +1,4 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -19,7 +19,7 @@
         android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         app:active_item_color="@color/App_yellow"
         app:centre_button_color="@color/App_yellow"
         app:inactive_item_color="@android:color/white"
@@ -28,4 +28,4 @@
         app:space_item_icon_size="@dimen/space_item_icon_default_size"
         app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
         app:space_item_text_size="@dimen/space_item_text_default_size" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
