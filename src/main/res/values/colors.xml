@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="EditeText">#202b3d</color>
+    <color name="EditeText">#b3202b3d</color>
     <color name="App_yellow">#fad100</color>
     <color name="Button">#0c121b</color>
 </resources>

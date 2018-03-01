@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.karim.troupia.LoginAct"
     android:background="@drawable/bk1">
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress_bar"
+        android:visibility="gone"/>
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -48,6 +55,15 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/FBlogin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import jp.shts.android.storiesprogressview.StoriesProgressView;
 
 public class Stroies extends AppCompatActivity implements StoriesProgressView.StoriesListener {
@@ -15,10 +17,11 @@ public class Stroies extends AppCompatActivity implements StoriesProgressView.St
     StoriesProgressView storiesProgressView;
     ImageView image;
     int count = 0;
-    private static final int PROGRESS_COUNT = 3;
+    private static final int PROGRESS_COUNT = common.URLSStroies.size();
     private final long[] durations = new long[]{
             500L, 1000L, 1500L, 4000L, 5000L, 1000,
     };
+    String []URLS=common.URLSStroies.toArray(new String[common.URLSStroies.size()]);
     int[] resuorce = new int[]{
             R.drawable.bk1,
             R.drawable.bk2,
@@ -26,14 +29,12 @@ public class Stroies extends AppCompatActivity implements StoriesProgressView.St
     };
     long pressTime = 0L;
     long limit = 500L;
-
     @Override
     protected void onDestroy() {
         storiesProgressView.destroy();
         finish();
         super.onDestroy();
     }
-
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -62,10 +63,9 @@ public class Stroies extends AppCompatActivity implements StoriesProgressView.St
         // storiesProgressView.setStoriesCountWithDurations(durations);
         storiesProgressView.setStoriesListener(this);
         storiesProgressView.startStories();
-
         image = (ImageView) findViewById(R.id.image);
-        image.setImageResource(resuorce[count]);
-
+     //   image.setImageResource(resuorce[count]);
+        Glide.with(this).load(URLS[count]).into(image);
         // bind reverse view
         View reverse = findViewById(R.id.reverse);
         reverse.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,6 @@ public class Stroies extends AppCompatActivity implements StoriesProgressView.St
             }
         });
         reverse.setOnTouchListener(onTouchListener);
-
         // bind skip view
         View skip = findViewById(R.id.skip);
         skip.setOnClickListener(new View.OnClickListener() {
@@ -88,15 +87,16 @@ public class Stroies extends AppCompatActivity implements StoriesProgressView.St
     }
     @Override
     public void onNext() {
-        image.setImageResource(resuorce[++count]);
+       // image.setImageResource(resuorce[++count]);
+        if(count>1)
+            Glide.with(this).load(URLS[++count]).into(image);
     }
-
     @Override
     public void onPrev() {
         if ((count - 1) < 0) return;
-        image.setImageResource(resuorce[--count]);
+        Glide.with(this).load(URLS[--count]).into(image);
+       // image.setImageResource(resuorce[--count]);
     }
-
     @Override
     public void onComplete() {
         finish();

@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/Button"
-        android:layout_margin="25dp"/>
+        android:layout_margin="25dp"
+        android:id="@+id/ImageViewTitle"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
             android:text="Me and my friends decided to surprise our friend Omar with surprise birthday party even though he catch us xD but it was an awsome day..."
             android:textColor="@color/space_white"
             android:textSize="15dp"
+            android:id="@+id/detials_txt"
             android:layout_margin="15dp"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/space_white"
                 android:text="Gzert elward"
+                android:id="@+id/AddressText"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.karim.troupia.MapsActivity"
     >
+
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -15,6 +16,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/searchLayout"
+        android:background="@color/white_with_alpha"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/Button"
+            android:padding="10dp">
+        <SearchView
+            android:layout_width="150dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/search"
+            android:searchIcon="@drawable/search_ic"
+            android:background="@drawable/buttonborder"></SearchView>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:id="@+id/profileImage"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/defualt_image"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/App_yellow"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ListViewSearch"
+            android:background="@color/EditeText"></ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/border_friends"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="FaceBook"
+                android:textColor="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/facebookBtn"/>
+        </LinearLayout>
     <com.luseen.spacenavigation.SpaceNavigationView
         android:id="@+id/space"
         android:layout_width="match_parent"
@@ -24,8 +85,9 @@
         app:centre_button_color="@color/App_yellow"
         app:inactive_item_color="@android:color/white"
         app:space_background_color="@color/Button"
-        app:centre_button_icon="@drawable/nav_ic"
+        app:centre_button_icon="@drawable/add_ic"
         app:space_item_icon_size="@dimen/space_item_icon_default_size"
         app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
         app:space_item_text_size="@dimen/space_item_text_default_size" />
+    </LinearLayout>
 </RelativeLayout>
