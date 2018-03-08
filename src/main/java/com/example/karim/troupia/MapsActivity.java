@@ -164,7 +164,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         MapMemo=new HashMap<>();
         for(i=0;i<LituideList.size();i++){
             mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(LituideList.get(i))
-                    ,Double.parseDouble(LongtuideList.get(i)))));
+                    ,Double.parseDouble(LongtuideList.get(i))))
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.memory)));
             Double lit=Double.parseDouble(LituideList.get(i));
             Double lon=Double.parseDouble(LongtuideList.get(i));
            MapMemo.put(new Pair<Double, Double>(lit,lon),i);
@@ -564,7 +565,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void drawStories() {
         MapStory=new HashMap<>();
         for(i=0;i<LituideListStroies.size();i++){
-            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.story)).position(new LatLng(Double.parseDouble(LituideListStroies.get(i))
+            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.story_ic_done)).position(new LatLng(Double.parseDouble(LituideListStroies.get(i))
                     ,Double.parseDouble(LongtuideListStroies.get(i)))));
             Double lit=Double.parseDouble(LituideListStroies.get(i));
             Double lon=Double.parseDouble(LongtuideListStroies.get(i));
