@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.karim.troupia.Model.Memory;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,6 +53,7 @@ public class Profile extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseAuth auth;
     FirebaseDatabase db;
+    LinearLayout eventLinearLayout;
     private void splitData(Map<String, Object> value) {
         Urls =null;
         for (Map.Entry<String, Object> enter : value.entrySet()) {
@@ -63,7 +66,7 @@ public class Profile extends AppCompatActivity {
                     Urls=enter1.getValue().toString();
                 }
         }
-        Picasso.with(this).load(Urls).into(profileImage);
+        Glide.with(this).load(Urls).into(profileImage);
     }
     private void choseImage() {
         Intent intent=new Intent();
@@ -135,7 +138,6 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild((FirebaseAuth.getInstance().getCurrentUser().getUid()))) {
-
                     splitData((Map<String, Object>) dataSnapshot.getValue());
                 }
             }
@@ -163,6 +165,13 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        eventLinearLayout=findViewById(R.id.linearEvents);
+        eventLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(),EventsActivity.class));
             }
         });
     }

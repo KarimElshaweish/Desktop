@@ -35,6 +35,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class faceLogin extends AppCompatActivity {
     @Override
@@ -73,7 +74,7 @@ public class faceLogin extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                GraphData();
+             //   GraphData();
             }
             @Override
             public void onCancel() {
@@ -87,13 +88,14 @@ public class faceLogin extends AppCompatActivity {
         });
     }
     String path="";
-    private void GraphData() {
+    public void GraphData() {
         GraphRequest request=GraphRequest.newMeRequest(
                 AccessToken.getCurrentAccessToken()
                 ,new GraphRequest.GraphJSONObjectCallback() {
                     @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                            System.out.println(object.toString());
+                    public void onCompleted(final JSONObject object, GraphResponse response) {
+                        Log.d("object",object.toString());
+                          //  System.out.println(object.toString());
                         try {
                             path="/"+object.get("id").toString()+"/events?end_time>\"2018-02-21\"";
                             new GraphRequest(
@@ -104,6 +106,19 @@ public class faceLogin extends AppCompatActivity {
                                     new GraphRequest.Callback() {
                                         public void onCompleted(GraphResponse response) {
                                             System.out.println(response);
+                                            try {
+                                                JSONArray jsonArray=response.getJSONObject().getJSONArray("data");
+                                                common.jsonArray=jsonArray;
+                                              /*  for(int i = 0; i < jsonArray.length(); i++){
+                                                    JSONObject oneAlbum = jsonArray.getJSONObject(i);
+                                                    //get your values
+                                                    System.out.print(oneAlbum.getString("description")); // this will return you the album's name.
+                                                    System.out.print(oneAlbum.getString("start_time")); // this will return you the album's name.
+                                                }*/
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
                                         }
                                     }
                             ).executeAsync();

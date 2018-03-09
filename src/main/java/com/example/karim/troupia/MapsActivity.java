@@ -85,6 +85,8 @@ import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.FileNotFoundException;
@@ -102,7 +104,8 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,LocationListener, MaterialSearchBar.OnSearchActionListener {
-
+    LinearLayout fbLinearLayout;
+    boolean fbCheck=false;
     private GoogleMap mMap;
     private final static int MY_PERMSSION_FINE_LOCATION = 101;
     final int PICKIMAGE_REQUEST = 71;
@@ -366,10 +369,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayAdapter<String> adapter;
     LinearLayout SearchLinearLayout;
     DatabaseReference mDatabaseReference2;
+    /*Log.d("name", jsonArray.getJSONObject(0).getJSONObject("place").getString("name"));
+                                                    Log.d("street", jsonArray.getJSONObject(0).getJSONObject("place").getJSONObject("location")
+                                                            .getString("street"));*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        faceLogin faceLogin=new faceLogin();
+        faceLogin.GraphData();
+          for(int i = 0; i < common.jsonArray.length(); i++){
+              try {
+                  Log.d("name", common.jsonArray.getJSONObject(0).getJSONObject("place").getString("name"));
+              } catch (JSONException e) {
+                  e.printStackTrace();
+              }
+              try {
+                  Log.d("street", common.jsonArray.getJSONObject(0).getJSONObject("place").getJSONObject("location")
+                          .getString("street"));
+              } catch (JSONException e) {
+                  e.printStackTrace();
+              }
+          }
+        fbLinearLayout=findViewById(R.id.fbLayout);
         TextView fbTxt=findViewById(R.id.facebookBtn);
         fbTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -498,6 +520,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             SearchLinearLayout.setVisibility(View.GONE);
                         }
                         break;
+                    case 2:
+                        if(!fbCheck) {
+                            fbLinearLayout.setVisibility(View.VISIBLE);
+                            fbCheck = true;
+                        }
+                        else{
+                            fbLinearLayout.setVisibility(View.GONE);
+                            fbCheck=false;
+                        }
+                        break;
                     case 3:
                         startActivity(new Intent(getBaseContext(), photoeidt.class));
                         break;
@@ -516,6 +548,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         } else {
                             SearchBarVisivable = !SearchBarVisivable;
                             SearchLinearLayout.setVisibility(View.GONE);
+                        }
+                        break;
+                    case 2:
+                        if(!fbCheck) {
+                            fbLinearLayout.setVisibility(View.VISIBLE);
+                            fbCheck = true;
+                        }
+                        else{
+                            fbLinearLayout.setVisibility(View.GONE);
+                            fbCheck=false;
                         }
                         break;
                     case 3:

@@ -48,7 +48,8 @@
         <activity android:name=".Stroies" />
         <activity android:name=".Profile" />
         <activity android:name=".faceLogin" />
-        <activity android:name=".photoeidt"></activity>
+        <activity android:name=".photoeidt" />
+        <activity android:name=".EventsActivity"></activity>
     </application>
 
 </manifest>
